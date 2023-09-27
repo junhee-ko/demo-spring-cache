@@ -1,11 +1,13 @@
 package com.example.demospringcache
 
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Component
 import java.lang.IllegalStateException
 
 @Component
 class SimpleBookRepository : BookRepository {
 
+    @Cacheable("books")
     override fun getByIsbn(isbn: String): Book {
         simulateSlowService()
 
