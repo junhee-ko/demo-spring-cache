@@ -17,6 +17,13 @@ class SimpleBookRepository : BookRepository {
         )
     }
 
+    @Cacheable("default-book")
+    override fun getDefaultBook(): Book =
+        Book(
+            isbn = "isbn-default",
+            title = "title-default"
+        )
+
     private fun simulateSlowService() {
         try {
             Thread.sleep(3000L)
